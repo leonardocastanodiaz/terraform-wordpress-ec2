@@ -1,0 +1,91 @@
+---
+
+jenkins_version: "2.191"
+jenkins_admin_username: admin # if this changes, the master user data script will break as it relies on this account name
+jenkins_admin_password: adminadminadmin
+jenkins_http_port: 8080
+# NodeProvisioner config from: https://www.reddit.com/r/devops/comments/9rpfbq/lets_talk_bestpractice_jenkins_on_aws_ecs/
+jenkins_java_options: "-Djenkins.install.runSetupWizard=false -Dorg.apache.commons.jelly.tags.fmt.timeZone=Europe/London -Djava.awt.headless=true -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85"
+jenkins_proxy_noproxy:
+  - "127.0.0.1"
+  - "localhost"
+jenkins_plugins:
+  - amazon-ecr
+  - amazon-ecs
+  - ansicolor
+  - antisamy-markup-formatter
+  - authorize-project
+  - bitbucket
+  - bitbucket-build-status-notifier
+  - blueocean
+  - build-pipeline-plugin
+  - build-timeout
+  - cloudbees-folder
+  - config-file-provider
+  - credentials
+  - credentials-binding
+  - dashboard-view
+  - docker-workflow
+  - git
+  - greenballs
+  - job-import-plugin
+  - kubernetes-cli
+  - ldap
+  - matrix-auth
+  - pam-auth
+  - pipeline-stage-view
+  - slack
+  - post-build-task
+  - ssh-agent
+  - ssh-credentials
+  - ssh-slaves
+  - timestamperws-cleanup
+  - workflow-aggregator
+  - ws-cleanup
+
+# Jenkins configuration for Nginx.
+#jenkins_init_changes:
+#  - option: "JENKINS_ARGS"
+#    value: "--prefix={{ jenkins_url_prefix }} --httpListenAddress=127.0.0.1"
+#  - option: "{{ jenkins_java_options_env_var }}"
+#    value: "{{ jenkins_java_options }}"
+
+docker_users:
+  - jenkins
+
+
+
+nginx_proxy_vhostname: "the-return-of-the-jenkins.sbmdev.net"
+nginx_remove_default_vhost: true
+nginx_extra_http_options: |
+  ignore_invalid_headers off;
+  proxy_set_header        Host              $host;
+  proxy_set_header        X-Real-IP         $remote_addr;
+  proxy_set_header        X-Forwarded-For   $proxy_add_x_forwarded_for;
+  proxy_set_header        X-Forwarded-Proto $http_x_forwarded_proto;
+  proxy_set_header        X-Forwarded-Port  $http_x_forwarded_port;
+nginx_vhosts:
+  - listen: "80 default_server"
+    server_name: "localhost"
+    extra_parameters: |
+      # Remove nginx and OS versions from server header
+      server_tokens off;
+
+      # Redirect HTTP requests to HTTPS basing on X-Forwarded-Proto header from AWS ELB
+      if ($http_x_forwarded_proto = 'http') {
+        return 301 https://$host$request_uri;
+      }
+
+      # Extract real IP from X-Forwarded-For header to see user IP in nginx logs
+      set_real_ip_from  10.0.0.0/8;
+      set_real_ip_from  172.16.0.0/12;
+      real_ip_header    X-Forwarded-For;
+      real_ip_recursive on;
+
+      location / {
+            proxy_pass              http://localhost:8080;
+
+            # Required for new HTTP-based CLI
+            proxy_http_version      1.1;
+            proxy_request_buffering off;
+          }

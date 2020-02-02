@@ -8,10 +8,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=777", "fmode=700"]
 
-  Dir.mkdir(ENV['HOME'] + "/.aws") unless Dir.exist?(ENV['HOME'] + "/.aws")
+#  Dir.mkdir(ENV['HOME'] + "/.aws") unless Dir.exist?(ENV['HOME'] + "/.aws")
 
 #  config.vm.synced_folder ENV['HOME'] + "/.aws", "/home/vagrant/.aws"
-  config.vm.synced_folder "/.aws", "/home/vagrant/.aws"
+  config.vm.synced_folder "/Users/leonardocastano/repos/terraform-wordpress-ec2/.aws", "/home/vagrant/.aws"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
@@ -71,6 +71,7 @@ Vagrant.configure("2") do |config|
     provisioner.vm.provision "shell", inline: "aws --version"
     provisioner.vm.provision "shell", inline: "packer --version"
     provisioner.vm.provision "shell", inline: "terraform --version"
+    provisioner.vm.provision "shell", inline: "chown -R vagrant:vagrant *"
 
   end
 end

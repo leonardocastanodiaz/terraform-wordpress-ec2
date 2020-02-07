@@ -1,4 +1,9 @@
+## Terraform Files
+**/.terraform
+**/.gitignore
+.gitignore
 .aws/credentials
+jenkins*
 .vagrant/
 config
 logfiles.tar.gz

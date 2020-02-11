@@ -3,12 +3,12 @@ variable "env" {
   default = "dev"
 }
 
-data "aws_eip" "rm-wordpress-eip" {
+/*data "aws_eip" "rm-wordpress-eip" {
   filter {
     name   = "tag:Name"
     values = ["rm-wordpress-eip"]
   }
-}
+}*/
 
 variable "ecs_cluster_name" {
   type = string

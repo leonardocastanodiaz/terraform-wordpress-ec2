@@ -8,3 +8,4 @@ jenkins*
 config
 logfiles.tar.gz
 *.log
+*.tfstate

@@ -13,7 +13,7 @@ resource "aws_route_table" "rm-wordpress-alb-rt" {
     gateway_id = aws_internet_gateway.rm-wordpress-igw.id
   }
   tags = {
-    Name = "rm-wordpress"
+    Name = "rm-wordpress-alb"
   }
 }
 
@@ -25,7 +25,7 @@ resource "aws_route_table" "rm-wordpress-rt" {
   }
 
   tags = {
-    Name = "rm-wordpress"
+    Name = "rm-wordpress-wp"
   }
 }
 
@@ -39,12 +39,3 @@ resource "aws_route_table_association" "rm-wordpress-alb-route-table-association
   route_table_id = aws_route_table.rm-wordpress-alb-rt.id
 }
 
-resource "aws_route_table_association" "rm-wordpress-alb-route-table-association-s"{
-  subnet_id = aws_subnet.rm-wordpress-alb-master-subnet.id
-  route_table_id = aws_route_table.rm-wordpress-alb-rt.id
-}
-
-resource "aws_route_table_association" "rm-wordpress-bastion-route-table-association"{
-  subnet_id = aws_subnet.rm-wordpress-bastion-subnet.id
-  route_table_id = aws_route_table.rm-wordpress-alb-rt.id
-}

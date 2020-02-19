@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     provisioner.vm.provision "shell", inline: "sudo apt install -y docker.io python3-pip"
     provisioner.vm.provision "shell", inline: "sudo apt install -y ntp"
     provisioner.vm.provision "shell", inline: "sudo apt install -y ntpdate"
-    provisioner.vm.provision "shell", inline: "zcat <(curl -s \"https://releases.hashicorp.com/terraform/0.12.13/terraform_0.12.13_linux_amd64.zip\") | sudo tee /usr/bin/terraform > /dev/null && sudo chmod +x /usr/bin/terraform"
+    provisioner.vm.provision "shell", inline: "zcat <(curl -s \"https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip\") | sudo tee /usr/bin/terraform > /dev/null && sudo chmod +x /usr/bin/terraform"
     provisioner.vm.provision "shell", inline: "zcat <(curl -s \"https://releases.hashicorp.com/packer/1.4.3/packer_1.4.3_linux_amd64.zip\" ) | sudo tee /usr/bin/packer > /dev/null && sudo chmod +x /usr/bin/packer"
     provisioner.vm.provision "shell", inline: "sudo pip3 install awscli --upgrade"
     provisioner.vm.provision "shell", inline: "sudo -H pip3 install ansible==2.8.5"

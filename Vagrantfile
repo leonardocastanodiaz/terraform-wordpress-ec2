@@ -58,10 +58,8 @@ Vagrant.configure("2") do |config|
     provisioner.vm.provision "shell", inline: "chown vagrant:vagrant dotfiles"
     provisioner.vm.provision "shell", inline: "echo 'echo \"Welcome To DEV MACHINE \"|cowsay' >> .zshrc"
     # vim and more
-    provisioner.vm.provision "shell", inline: "sudo mkdir -p ~/.vim/autoload ~/.vim/bundle"
-    provisioner.vm.provision "shell", inline: "curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
-    provisioner.vm.provision "shell", inline: "mkdir -p /home/vagrant/.vim/autoload /home/vagrant/.vim/bundle"
-    provisioner.vm.provision "shell", inline: "curl -LSso /home/vagrant/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
+    provisioner.vm.provision "shell", inline: "sudo mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
+    provisioner.vm.provision "shell", inline: "mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
     provisioner.vm.provision "shell", inline: "curl -sLf https://spacevim.org/install.sh | bash"
     provisioner.vm.provision "shell", inline: "sudo runuser -l vagrant -c 'curl -sLf https://spacevim.org/install.sh | bash'"
     #

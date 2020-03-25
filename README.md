@@ -20,10 +20,14 @@ The aim is to produce a set-up that will be fully automated and self-maintaining
     
     e) Use GitLab - ITP likes it ;-)
     
-    f) Github Actions or GitLab Pipelines/Runners - the latter is particularly slick
+    f) CI/CD - Github Actions or GitLab Pipelines/Runners - the latter is particularly slick
     
     g) Use containers for apps, DBs, etc.
     
     h) Use K3s (not a typo - https://k3s.io/) to deploy locally becuase it's container based
     
     i) Terraform Cloud for .tfstate https://terraform.io
+    
+    j) Use branches for development - never commit to master
+    
+    k) At least one approver for each merge/pull request

@@ -25,7 +25,6 @@ resource "aws_s3_bucket_object" "upload-index" {
   source       = "html"
   content_type = "text/html"
   acl          = "public-read"
-  etag         = "${md5(file("html"))}"
 }
 
 

@@ -21,11 +21,11 @@ resource "aws_s3_bucket" "rm-web" {
 }
 resource "aws_s3_bucket_object" "upload-index" {
   bucket       = aws_s3_bucket.rm-web.bucket
-  key          = "index.html"
-  source       = "index.html"
+  key          = "html"
+  source       = "html"
   content_type = "text/html"
   acl          = "public-read"
-  etag         = "${md5(file("index.html"))}"
+  etag         = "${md5(file("html"))}"
 }
 
 

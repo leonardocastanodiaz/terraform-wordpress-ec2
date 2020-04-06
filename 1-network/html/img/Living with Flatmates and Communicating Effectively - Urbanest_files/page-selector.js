@@ -1,0 +1,1 @@
+"use strict";jQuery(document).ready(function(){var e=window.location.href.split(":");e[1]&&e[2]?(e[1],e[2]):e[1],jQuery("#page-selector").selectric({optionsItemBuilder:function(e,t,r){return t.val().length?'<a href="'+e.value+'" class="">'+e.text:e.text+"</a>"}}),jQuery("#page-selector").on("selectric-select",function(e,t,r){window.location.href=t.value})});

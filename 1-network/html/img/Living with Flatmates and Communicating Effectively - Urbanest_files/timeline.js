@@ -1,0 +1,1 @@
+"use strict";jQuery(document).ready(function(){jQuery(".timeline-nav").slick({slidesToShow:9,slidesToScroll:1,asNavFor:".timeline-slider",centerMode:!1,focusOnSelect:!0,mobileFirst:!0,arrows:!1,infinite:!1}),jQuery(".timeline-slider").slick({slidesToShow:1,slidesToScroll:1,arrows:!1,centerMode:!1,cssEase:"ease",edgeFriction:.5,mobileFirst:!0,speed:500,infinite:!1})});

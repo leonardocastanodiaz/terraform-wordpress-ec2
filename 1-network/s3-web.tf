@@ -21,10 +21,11 @@ resource "aws_s3_bucket" "rm-web" {
 }
 resource "aws_s3_bucket_object" "upload-index" {
   bucket       = aws_s3_bucket.rm-web.bucket
-  key          = "html"
-  source       = "html"
+  key          = "index.html"
+  source       = "html/index.html"
   content_type = "text/html"
   acl          = "public-read"
+  etag         = "${md5(file("index.html"))}"
 }
 
 
@@ -34,7 +35,7 @@ resource "aws_s3_bucket_object" "upload-error" {
   source       = "error.html"
   content_type = "text/html"
   acl          = "public-read"
-  etag         = "${md5(file("index.html"))}"
+  etag         = "${md5(file("error.html"))}"
 }
 
 

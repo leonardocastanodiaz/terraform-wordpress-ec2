@@ -1,0 +1,2 @@
+ docker container stop dev || docker container rm dev || docker rmi n || sleep 2 && docker images && sleep 5 &&  \
+docker build -t n . && docker run -d --name dev --rm -p 80:80  n:latest  && sleep 2 &&  docker ps

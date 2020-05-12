@@ -1,1 +1,0 @@
-"use strict";jQuery(document).ready(function(){var e=jQuery("#urbanest-maintenance-mode").attr("value"),t=jQuery("#cms-url").attr("value");"on"===e&&jQuery('a[href*="'+t+'"]').each(function(e,t){jQuery(t).attr("uk-toggle","target: #urbanest-maintenance"),jQuery(t).attr("href","#"),jQuery(t).removeAttr("target")})});

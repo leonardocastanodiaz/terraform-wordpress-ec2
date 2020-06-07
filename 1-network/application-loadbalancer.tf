@@ -31,6 +31,22 @@ resource "aws_alb_target_group" "rm-www-nginx-tg" {
 }
 
 
+resource "aws_alb_target_group" "rm-test-nginx-tg" {
+  name_prefix = "ngnx02" # 6 character limit, wtf
+  port        = 8080
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      =  data.terraform_remote_state.vpc.outputs.vpc_id
+
+  lifecycle {
+    create_before_destroy = true
+  }
+  tags = {
+    Name = "rm-test-nginx-tg"
+    Environment = "Dev"
+  }
+}
+
 
 resource "aws_alb_listener" "rm-www-nginx-listener" {
   load_balancer_arn = aws_alb.rm-lb.arn
@@ -40,6 +56,19 @@ resource "aws_alb_listener" "rm-www-nginx-listener" {
   default_action {
     type = "forward"
     target_group_arn = aws_alb_target_group.rm-www-nginx-tg.arn
+  }
+
+}
+
+
+resource "aws_alb_listener" "rm-test-nginx-listener" {
+  load_balancer_arn = aws_alb.rm-lb.arn
+  port = "8080"
+  protocol = "HTTP"
+
+  default_action {
+    type = "forward"
+    target_group_arn = aws_alb_target_group.rm-test-nginx-tg.arn
   }
 
 }

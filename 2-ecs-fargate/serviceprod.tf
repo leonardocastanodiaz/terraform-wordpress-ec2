@@ -2,7 +2,7 @@ resource "aws_ecs_service" "rm-service" {
   name = "rm-service"
   cluster = aws_ecs_cluster.rm-cluster.id
   task_definition = aws_ecs_task_definition.rm-www-task-definition.arn
-  desired_count = "2"
+  desired_count = "1"
   lifecycle {
     ignore_changes = [
       capacity_provider_strategy

@@ -2,8 +2,8 @@
   {
     "name": "rm-www-nginx",
     "volumesFrom": [],
-    "cpu": 1024,
-    "memory": 2048,
+    "cpu": 256,
+    "memory": 512,
     "essential": true,
     "mountPoints": [],
     "environment": [],

@@ -47,27 +47,13 @@ resource "aws_ecs_cluster" "rm-cluster" {
   default_capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight = 100
+    base = 0
   }
 
   tags = {
     Name = "rm-cluster"
   }
 
-}
-
-resource "aws_ecs_task_definition" "rm-www-task-definition" {
-  container_definitions = file("rm-www-static-task-definition.json")
-  family = "rm-www-nginx-task"
-  cpu = "1024"
-  memory = "2048"
-  requires_compatibilities = ["FARGATE"]
-  network_mode = "awsvpc"
-  execution_role_arn = aws_iam_role.rm-ecs-iam-role.arn
-  task_role_arn = aws_iam_role.rm-ecs-iam-role.arn
-
-  tags = {
-    Name = "rm-www-task-definition"
-  }
 }
 
 

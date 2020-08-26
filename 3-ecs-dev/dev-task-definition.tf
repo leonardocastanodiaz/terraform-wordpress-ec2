@@ -1,6 +1,6 @@
-resource "aws_ecs_task_definition" "rm-www-task-definition" {
-  container_definitions = file("prod-rm-www-static-container-definition.json")
-  family = "rm-www-nginx-task"
+resource "aws_ecs_task_definition" "dev-rm-www-task-definition" {
+  container_definitions = file("dev-rm-www-static-container-definition.json")
+  family = "dev-rm-www-nginx-task"
   cpu = "256"
   memory = "512"
   requires_compatibilities = ["FARGATE"]
@@ -9,6 +9,6 @@ resource "aws_ecs_task_definition" "rm-www-task-definition" {
   task_role_arn = aws_iam_role.rm-ecs-iam-role.arn
 
   tags = {
-    Name = "rm-www-task-definition"
+    Name = "dev-rm-www-task-definition"
   }
 }

@@ -1,17 +1,18 @@
 [
   {
-    "name": "rm-www-nginx",
+    "name": "rm-dev-nginx",
     "volumesFrom": [],
-    "cpu": 1024,
-    "memory": 2048,
+    "cpu": 256,
+    "memory": 512,
     "essential": true,
     "mountPoints": [],
     "environment": [],
-    "image": "059465471618.dkr.ecr.eu-west-2.amazonaws.com/iit-container-rm-www-static:latest",
+    "image": "059465471618.dkr.ecr.eu-west-2.amazonaws.com/iit-container-rm-www-static:dev",
     "portMappings": [
       {
         "protocol": "tcp",
-        "containerPort": 80
+        "containerPort": 80,
+        "hostPort": 80
     }
     ],
     "logConfiguration": {
@@ -19,7 +20,7 @@
       "options": {
         "awslogs-group": "/fargate/service/rm-ecs",
         "awslogs-region": "eu-west-2",
-        "awslogs-stream-prefix": "rm-www-nginx"
+        "awslogs-stream-prefix": "rm-dev-nginx"
       }
     }
   }

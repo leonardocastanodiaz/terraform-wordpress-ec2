@@ -11,7 +11,7 @@ pipeline {
                         severity: 'high',
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
-                        targetFile: 'Vagrantfile',
+                        targetFile: 'install-nginx.sh',
                         failOnIssues: 'true'
                 )
             }

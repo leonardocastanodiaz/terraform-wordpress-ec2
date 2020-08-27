@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('test snyk') {
             steps {
-               sh 'ls '
+               sh 'npm install -g snyk'
             }
         }
         stage('snyk dependency scan') {

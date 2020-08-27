@@ -9,7 +9,7 @@ pipeline {
                 snykSecurity(
                         organisation: 'cloudbees',
                         severity: 'high',
-                        snykInstallation: 'snyk-latest',
+                        snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
                         targetFile: 'requirements.txt',
                         failOnIssues: 'true'

@@ -12,7 +12,7 @@ pipeline {
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
                         targetFile: 'install-nginx.sh',
-                        additional-arguments: '--packageManager=pip',
+           #             additional-arguments: '--packageManager=pip',
                         failOnIssues: 'false'
                 )
             }

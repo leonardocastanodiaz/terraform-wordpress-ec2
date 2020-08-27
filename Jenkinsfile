@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('test snyk') {
-            step {
+            steps {
                sh 'ls '
             }
         }

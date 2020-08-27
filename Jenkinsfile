@@ -11,8 +11,7 @@ pipeline {
                         severity: 'high',
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
-                        targetFile: 'install-nginx.sh',
-         //  #             additional-arguments: '--packageManager=pip',
+                        targetFile: 'Dockerfile',
                         failOnIssues: 'false'
                 )
             }

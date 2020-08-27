@@ -12,7 +12,6 @@ pipeline {
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
                         targetFile: 'Dockerfile',
-                        packageManager: 'pip',
                         failOnIssues: 'false'
                 )
             }

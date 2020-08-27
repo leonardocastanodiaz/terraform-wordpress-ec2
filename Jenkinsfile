@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('snyk dependency scan') {
             tools {
-                snyk 'snyk-latest'
+                snyk 'snyk-test'
             }
             steps {
                 snykSecurity(

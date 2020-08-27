@@ -1,1 +1,16 @@
-snykSecurity failOnIssues: false, snykInstallation: 'Please define a Snyk installation in the Jenkins Global Tool Configuration. This task will not run without a Snyk installation.', snykTokenId: 'snyk-test'
+
+node {
+    stage('Checkout') {
+        checkout scm
+    }
+
+    stage('Clean Verify') {
+        sh 'mvn clean verify'
+    }
+
+    if (env.BRANCH_NAME == "develop") {
+        stage('Docker') {
+            sh 'mvn docker:build -DpushImage'
+        }
+    }
+}

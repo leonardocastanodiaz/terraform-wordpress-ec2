@@ -8,9 +8,5 @@ node {
         sh 'mvn clean verify'
     }
 
-    if (env.BRANCH_NAME == "develop") {
-        stage('Docker') {
-            sh 'mvn docker:build -DpushImage'
-        }
-    }
+
 }

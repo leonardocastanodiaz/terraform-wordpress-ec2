@@ -11,7 +11,7 @@ pipeline {
                         severity: 'high',
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
-                        targetFile: 'requirements.txt',
+                        targetFile: '*.tf',
                         failOnIssues: 'true'
                 )
             }

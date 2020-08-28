@@ -1,3 +1,4 @@
+def IMAGE_NAME = "image-name"
 pipeline {
     agent any
     stages {
@@ -11,7 +12,7 @@ pipeline {
                 snyk 'snyk-test'
             }
             steps {
-                snykSecurity failOnIssues: false, projectName: 'Demo', snykInstallation: 'snyk-test', snykTokenId: 'snyk-test'
+             sh 'snyk monitor --docker $IMAGE_NAME --file=Dockerfile'
             }
         }
     }

@@ -11,7 +11,13 @@ pipeline {
                 snyk 'snyk-test'
             }
             steps {
-                stageScanForSnyk(context, snykAuthenticationCode, 'build.gradle', context.projectId)
+                snykSecurity(
+                        organisation: 'cloudbees',
+                        severity: 'high',
+                        snykInstallation: 'snyk-test',
+                        snykTokenId: 'snyk-test',
+                        failOnIssues: 'false'
+                )
             }
         }
     }

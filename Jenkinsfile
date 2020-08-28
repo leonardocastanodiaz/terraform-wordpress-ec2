@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('test snyk') {
             steps {
-               echo '#########'
+               echo '##### SNYK #####'
             }
         }
         stage('snyk dependency scan') {
@@ -16,6 +16,7 @@ pipeline {
                         severity: 'high',
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',
+                        targetFile: '',
                         failOnIssues: 'false'
                 )
             }

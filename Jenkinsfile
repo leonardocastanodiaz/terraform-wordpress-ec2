@@ -12,7 +12,7 @@ pipeline {
             }
             steps {
                 snykSecurity(
-                        organisation: 'cloudbees',
+                        organisation: '',
                         severity: 'high',
                         snykInstallation: 'snyk-test',
                         snykTokenId: 'snyk-test',

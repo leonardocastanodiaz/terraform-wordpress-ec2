@@ -11,14 +11,7 @@ pipeline {
                 snyk 'snyk-test'
             }
             steps {
-                snykSecurity(
-                        organisation: '',
-                        severity: 'high',
-                        snykInstallation: 'snyk-test',
-                        snykTokenId: 'snyk-test',
-                        targetFile: '',
-                        failOnIssues: 'false'
-                )
+                snykSecurity failOnIssues: false, projectName: 'Demo', snykInstallation: 'Please define a Snyk installation in the Jenkins Global Tool Configuration. This task will not run without a Snyk installation.', snykTokenId: 'snyk-cloud-subscriptions'
             }
         }
     }

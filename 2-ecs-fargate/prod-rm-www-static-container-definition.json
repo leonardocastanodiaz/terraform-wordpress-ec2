@@ -7,7 +7,7 @@
     "essential": true,
     "mountPoints": [],
     "environment": [],
-    "image": "059465471618.dkr.ecr.eu-west-2.amazonaws.com/iit-container-rm-www-static:000",
+    "image": "059465471618.dkr.ecr.eu-west-2.amazonaws.com/iit-container-rm-www-static:003",
     "portMappings": [
       {
         "protocol": "tcp",

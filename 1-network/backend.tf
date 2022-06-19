@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "rm-tf-rm-states"
+    bucket = "terraform-eu-west-2"
     key = "rm-wordpress/1-net.tfstate"
     encrypt = true
     region = "eu-west-2"
@@ -12,7 +12,7 @@ data "terraform_remote_state" "vpc" {
 
   config = {
     key = "rm-wordpress/0-vpc.tfstate"
-    bucket = "rm-tf-rm-states"
+    bucket = "terraform-eu-west-2"
     encrypt = true
     region = "eu-west-2"
   }

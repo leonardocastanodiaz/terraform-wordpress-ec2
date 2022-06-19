@@ -20,6 +20,14 @@ resource "aws_alb_target_group" "rm-www-nginx-tg" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      =  data.terraform_remote_state.vpc.outputs.vpc_id
+  health_check {
+    healthy_threshold = 10
+    unhealthy_threshold = 4
+    timeout = 10
+    interval = 60
+    protocol = "HTTP"
+    path = "/"
+  }
 
   lifecycle {
     create_before_destroy = true

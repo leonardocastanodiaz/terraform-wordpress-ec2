@@ -2,16 +2,16 @@
   {
     "name": "rm-www-nginx",
     "volumesFrom": [],
-    "cpu": 256,
-    "memory": 512,
+    "cpu": 512,
+    "memory": 1024,
     "essential": true,
     "mountPoints": [],
     "environment": [],
-    "image": "059465471618.dkr.ecr.eu-west-2.amazonaws.com/iit-container-rm-www-static:latest",
+    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/sky-test:latest",
     "portMappings": [
       {
         "protocol": "tcp",
-        "containerPort": 80
+        "containerPort": 3000
     }
     ],
     "logConfiguration": {

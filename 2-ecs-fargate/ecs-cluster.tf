@@ -44,10 +44,12 @@ resource "aws_ecs_cluster" "rm-cluster" {
   name = "rm-cluster"
   capacity_providers = ["FARGATE"]
 
+
   default_capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight = 100
     base = 0
+
   }
 
   tags = {

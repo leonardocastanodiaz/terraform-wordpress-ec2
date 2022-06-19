@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 0.12"
 
   backend "s3" {
-    bucket = "rm-tf-rm-states"
+    bucket = "terraform-eu-west-2"
     key = "rm-wordpress/0-vpc.tfstate"
     encrypt = true
     region = "eu-west-2"
@@ -12,5 +12,4 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-  version = "2.43"
 }

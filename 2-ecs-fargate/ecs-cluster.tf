@@ -70,6 +70,26 @@ resource "aws_cloudwatch_log_group" "logs-rm-www-nginx" {
 
 }
 
+resource "aws_cloudwatch_log_group" "logs-prometheus" {
+  name              = "/fargate/service/rm-prometheus"
+  retention_in_days = "90"
 
+  tags = {
+    Name = "logs-rm-prometheus"
+  }
+
+}
+
+
+
+resource "aws_cloudwatch_log_group" "logs-graphana" {
+  name              = "/fargate/service/graphana"
+  retention_in_days = "90"
+
+  tags = {
+    Name = "logs-rm-graphana"
+  }
+
+}
 
 

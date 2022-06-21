@@ -1,0 +1,34 @@
+[
+  {
+    "name": "cont-prometheus",
+    "volumesFrom": [],
+    "cpu": 512,
+    "memory": 1024,
+    "essential": true,
+    "mountPoints": [],
+    "environment": [],
+    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/prometheus:latest",
+    "portMappings": [
+      {
+        "protocol": "tcp",
+        "containerPort": 9090
+    }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/fargate/service/rm-prometheus",
+        "awslogs-region": "eu-west-2",
+        "awslogs-stream-prefix": "rm-www-prometheus"
+      }
+    },
+    "volumes": [
+      {
+        "efsVolumeConfiguration": {
+          "fileSystemId": "fs-0a393c7dba1109d6c",
+          "rootDirectory": "/"
+        }
+      }
+    ]
+  }
+]

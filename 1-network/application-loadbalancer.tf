@@ -39,9 +39,9 @@ resource "aws_alb_target_group" "rm-www-nginx-tg" {
 }
 
 
-resource "aws_alb_target_group" "rm-dev-nginx-tg" {
-  name_prefix = "ngnx02" # 6 character limit, wtf
-  port        = 8080
+resource "aws_alb_target_group" "prometheus-tg" {
+  name_prefix = "prom00" # 6 character limit, wtf
+  port        = 9090
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      =  data.terraform_remote_state.vpc.outputs.vpc_id
@@ -50,10 +50,27 @@ resource "aws_alb_target_group" "rm-dev-nginx-tg" {
     create_before_destroy = true
   }
   tags = {
-    Name = "rm-dev-nginx-tg"
-    Environment = "Dev"
+    Name = "prometheus-tg"
+    Environment = "Prod"
   }
 }
+
+resource "aws_alb_target_group" "graphana-tg" {
+  name_prefix = "grap00" # 6 character limit, wtf
+  port        = 3000
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      =  data.terraform_remote_state.vpc.outputs.vpc_id
+
+  lifecycle {
+    create_before_destroy = true
+  }
+  tags = {
+    Name = "graphana-tg"
+    Environment = "Prod"
+  }
+}
+
 
 
 resource "aws_alb_listener" "rm-www-nginx-listener" {
@@ -69,14 +86,26 @@ resource "aws_alb_listener" "rm-www-nginx-listener" {
 }
 
 
-resource "aws_alb_listener" "rm-dev-nginx-listener" {
+resource "aws_alb_listener" "prometheus-listener" {
   load_balancer_arn = aws_alb.rm-lb.arn
-  port = "8080"
+  port = "9090"
   protocol = "HTTP"
 
   default_action {
     type = "forward"
-    target_group_arn = aws_alb_target_group.rm-dev-nginx-tg.arn
+    target_group_arn = aws_alb_target_group.prometheus-tg.arn
+  }
+
+}
+
+resource "aws_alb_listener" "graphana-listener" {
+  load_balancer_arn = aws_alb.rm-lb.arn
+  port = "3000"
+  protocol = "HTTP"
+
+  default_action {
+    type = "forward"
+    target_group_arn = aws_alb_target_group.graphana-tg.arn
   }
 
 }

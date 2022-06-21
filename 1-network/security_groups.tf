@@ -19,6 +19,13 @@ resource "aws_security_group" "rm-www-sg" {
   }
 
   ingress {
+    from_port       = 9090
+    to_port         = 9090
+    protocol        = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"

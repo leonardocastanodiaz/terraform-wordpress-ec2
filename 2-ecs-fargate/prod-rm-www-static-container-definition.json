@@ -2,16 +2,16 @@
   {
     "name": "rm-www-nginx",
     "volumesFrom": [],
-    "cpu": 512,
-    "memory": 1024,
+    "cpu": 16,
+    "memory": 128,
     "essential": true,
     "mountPoints": [],
     "environment": [],
-    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/sky-test:latest",
+    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/sky-test:v1.0.3",
     "portMappings": [
       {
         "protocol": "tcp",
-        "containerPort": 3000
+        "containerPort": 5000
     }
     ],
     "logConfiguration": {

@@ -44,11 +44,13 @@ variable "add_tags" {
 # ----------------------------
 variable "cluster_name" {
   type        = string
+  default     = "rm-cluster"
   description = "ECS cluster name"
 }
 
 variable "service_name" {
   type        = string
+  default     = "rm-service"
   description = "fargate service name"
 }
 
@@ -234,4 +236,37 @@ variable "cpu_scale_out_cooldown" {
   description = "cool down time of scale out task by cpu usage"
 }
 
+
+variable autoscale_enabled {
+  type        = string
+  default     = "true"
+  description = "This is cool"
+}
+
+variable autoscale_max_capacity {
+  type        = number
+  default     = 5
+  description = "This is cool"
+}
+
+variable service_desired_count {
+  type        = number
+  default     = 1
+  description = "This is cool"
+}
+variable cluster {
+  type        = string
+  default     = "rm-service"
+  description = "This is cool"
+}
+variable name {
+  type        = string
+  default     = "rm-cluster"
+  description = "This is cool"
+}
+variable account_id {
+  type        = string
+  default     = "768324492833"
+  description = "This is cool"
+}
 

@@ -2,8 +2,8 @@
   {
     "name": "cont-graphana",
     "volumesFrom": [],
-    "cpu": 512,
-    "memory": 1024,
+    "cpu": 32,
+    "memory": 64,
     "essential": true,
     "mountPoints": [],
     "environment": [],

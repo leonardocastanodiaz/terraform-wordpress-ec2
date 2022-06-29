@@ -13,6 +13,14 @@ resource "aws_security_group" "rm-www-sg" {
   }
 
   ingress {
+    from_port = 0
+    protocol = "all"
+    to_port = 0
+    cidr_blocks = ["10.0.1.0/24"]
+
+  }
+
+  ingress {
     from_port       = 5000
     to_port         = 5000
     protocol        = "tcp"

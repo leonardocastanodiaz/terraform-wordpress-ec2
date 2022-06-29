@@ -1,7 +1,10 @@
 ## Terraform Files
+**/.terraform.lock.hcl
 **/.terraform
 **/.gitignore
 .gitignore
+/.terraform.lock.hcl
+*/*.terraform.lock.hcl
 .idea
 .DS_Store
 .aws/credentials
@@ -13,3 +16,4 @@ logfiles.tar.gz
 *.tfstate
 .browserslistrc
 .travis.yml
+.terraform.lock.hcl

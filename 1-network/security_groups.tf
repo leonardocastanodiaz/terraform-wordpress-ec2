@@ -5,6 +5,14 @@ resource "aws_security_group" "rm-www-sg" {
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   ingress {
+    from_port = 0
+    protocol = "all"
+    to_port = 0
+    cidr_blocks = ["195.206.170.11/32"]
+
+  }
+
+  ingress {
     from_port       = 5000
     to_port         = 5000
     protocol        = "tcp"

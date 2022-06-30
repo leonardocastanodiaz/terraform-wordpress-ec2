@@ -7,7 +7,7 @@
     "essential": true,
     "mountPoints": [],
     "environment": [],
-    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/jenkins:v1.0.0",
+    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/jenkins:v1.0.1",
     "portMappings": [
       {
         "protocol": "tcp",
@@ -43,6 +43,6 @@
         "valueFrom": "arn:aws:secretsmanager:eu-west-2:768324492833:secret:aws_secret_access_key-xlmGHk",
         "name": "aws_secret_access_key"
       }
-    ]
+      ]
   }
 ]

@@ -31,7 +31,8 @@ resource "aws_iam_role_policy" "rm-ecs-iam-role-policy" {
         "ecr:*",
         "logs:*",
         "cloudwatch:*",
-        "elasticloadbalancing:*"
+        "elasticloadbalancing:*",
+        "secretsmanager:*"
       ],
       "Resource": "*"
     }

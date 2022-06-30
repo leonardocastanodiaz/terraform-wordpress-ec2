@@ -14,6 +14,10 @@ output "graphana_tg_arn" {
   value = aws_alb_target_group.graphana-tg.arn
 }
 
+output "jenkins_tg_arn" {
+  value = aws_alb_target_group.jenkins-tg.arn
+}
+
 output "aws_load_balancer_roommates" {
   value = aws_alb.rm-lb.dns_name
 }

@@ -1,0 +1,48 @@
+[
+  {
+    "name": "cont-jenkins",
+    "volumesFrom": [],
+    "cpu": 32,
+    "memory": 512,
+    "essential": true,
+    "mountPoints": [],
+    "environment": [],
+    "image": "768324492833.dkr.ecr.eu-west-2.amazonaws.com/jenkins:v1.0.0",
+    "portMappings": [
+      {
+        "protocol": "tcp",
+        "containerPort": 8080
+      },
+      {
+        "protocol": "tcp",
+        "containerPort": 5000
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/fargate/service/jenkins",
+        "awslogs-region": "eu-west-2",
+        "awslogs-stream-prefix": "jenkins"
+      }
+    },
+    "volumes": [
+      {
+        "efsVolumeConfiguration": {
+          "fileSystemId": "fs-02e5bfc59960813ca",
+          "rootDirectory": "/"
+        }
+      }
+    ],
+    "secrets": [
+      {
+        "valueFrom": "arn:aws:secretsmanager:eu-west-2:768324492833:secret:aws_access_key_id-vIyI2I",
+        "name": "aws_access_key_id"
+      },
+      {
+        "valueFrom": "arn:aws:secretsmanager:eu-west-2:768324492833:secret:aws_secret_access_key-xlmGHk",
+        "name": "aws_secret_access_key"
+      }
+    ]
+  }
+]

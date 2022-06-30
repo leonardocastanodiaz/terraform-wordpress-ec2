@@ -1,7 +1,7 @@
-resource "aws_ecs_service" "graphana-service" {
-  name = "graphana-service"
+resource "aws_ecs_service" "jenkins-service" {
+  name = "jenkins-service"
   cluster = aws_ecs_cluster.rm-cluster.id
-  task_definition = aws_ecs_task_definition.graphana.arn
+  task_definition = aws_ecs_task_definition.jenkins.arn
   desired_count = "0"
   lifecycle {
     ignore_changes = [
@@ -17,8 +17,8 @@ resource "aws_ecs_service" "graphana-service" {
   }
 
   load_balancer {
-    target_group_arn = data.terraform_remote_state.network.outputs.graphana_tg_arn
-    container_name   = "cont-graphana"
-    container_port   = 3000
+    target_group_arn = data.terraform_remote_state.network.outputs.jenkins_tg_arn
+    container_name   = "cont-jenkins"
+    container_port   = 8080
   }
 }

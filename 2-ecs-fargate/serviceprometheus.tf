@@ -2,7 +2,7 @@ resource "aws_ecs_service" "prometheus-service" {
   name = "prometheus-service"
   cluster = aws_ecs_cluster.rm-cluster.id
   task_definition = aws_ecs_task_definition.prometheus.arn
-  desired_count = "1"
+  desired_count = "0"
   lifecycle {
     ignore_changes = [
       capacity_provider_strategy
